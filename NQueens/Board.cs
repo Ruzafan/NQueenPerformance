@@ -14,7 +14,8 @@ public class Board(int size)
     private void InitAlternatedRows()
     {
         var rows =  CollectionsMarshal.AsSpan(Enumerable.Range(0, N).ToList());
-        var backwards = CollectionsMarshal.AsSpan(Enumerable.Range(0, N).Reverse().ToList());
+        var rowsBackwards = size % 2 != 0 ? Enumerable.Range(0, N).Reverse().ToList() : Enumerable.Range(0, N).ToList();
+        var backwards = CollectionsMarshal.AsSpan(rowsBackwards);
         var turn = true;
         for (var i = 0; i < N; i++)
         {
